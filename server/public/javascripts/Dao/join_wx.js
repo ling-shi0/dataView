@@ -37,6 +37,18 @@ let getJoinWx = async function () {
             resolve(ret);
         });
     });
+    let result3 = await new Promise((resolve, reject) => {
+        let sqlStr = "SELECT pinglun1 FROM join_wx";
+        conn.query(sqlStr, function (err, ret) {
+            if (err) {
+                // 回滚之前的数据库操作, 直至碰到 beginTransaction
+                return conn.rollback(() => {
+                    resolve(err);
+                });
+            }
+            resolve(ret);
+        });
+    });
     await new Promise((resolve, reject) => {
         conn.commit(err => {
             if (err) {
@@ -48,7 +60,7 @@ let getJoinWx = async function () {
     });
     conn.release();
     for(let i=0;i<result2.length;i++){
-        result.push({name:result2[i].name,bili:result1[i].pinglun})
+        result.push({name:result2[i].name,bili:result1[i].pinglun,bili2:result3[i].pinglun1})
     }
     return result;
 };

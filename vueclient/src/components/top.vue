@@ -28,8 +28,10 @@
             xAxis: [
               {
                 type: 'category',
-                show: false,
-                data: res1
+                data: res1,
+                axisLabel:{
+                  rotate:-90
+                }
               }
             ],
             yAxis: [
@@ -56,7 +58,7 @@
                     label: {
                       show: true,
                       position: 'top',
-                      formatter: '{b}\n{c}'
+                      formatter: '{c}'
                     }
                   }
                 },

@@ -26,7 +26,43 @@ let getJoinYw = async function () {
         });
     });
     let result1 = await new Promise((resolve, reject) => {
+        let sqlStr = "SELECT xiazai FROM join_yw";
+        conn.query(sqlStr, function (err, ret) {
+            if (err) {
+                // 回滚之前的数据库操作, 直至碰到 beginTransaction
+                return conn.rollback(() => {
+                    resolve(err);
+                });
+            }
+            resolve(ret);
+        });
+    });
+    let result3 = await new Promise((resolve, reject) => {
+        let sqlStr = "SELECT xiazai1 FROM join_yw";
+        conn.query(sqlStr, function (err, ret) {
+            if (err) {
+                // 回滚之前的数据库操作, 直至碰到 beginTransaction
+                return conn.rollback(() => {
+                    resolve(err);
+                });
+            }
+            resolve(ret);
+        });
+    });
+    let result4 = await new Promise((resolve, reject) => {
         let sqlStr = "SELECT sorce FROM join_yw";
+        conn.query(sqlStr, function (err, ret) {
+            if (err) {
+                // 回滚之前的数据库操作, 直至碰到 beginTransaction
+                return conn.rollback(() => {
+                    resolve(err);
+                });
+            }
+            resolve(ret);
+        });
+    });
+    let result5 = await new Promise((resolve, reject) => {
+        let sqlStr = "SELECT sorce1 FROM join_yw";
         conn.query(sqlStr, function (err, ret) {
             if (err) {
                 // 回滚之前的数据库操作, 直至碰到 beginTransaction
@@ -48,7 +84,7 @@ let getJoinYw = async function () {
     });
     conn.release();
     for(let i=0;i<result2.length;i++){
-        result.push({name:result2[i].name,bili:result1[i].sorce})
+        result.push({name:result2[i].name,bili:result1[i].xiazai,bili2:result3[i].xiazai1,pingFen1:result4[i].sorce,pingFen2:result5[i].sorce1})
     }
     return result;
 };
