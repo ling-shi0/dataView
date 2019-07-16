@@ -1,8 +1,18 @@
 <template>
+  <div>
+    <div id="menu">
+      <el-menu :default-active="this.$route.path" router mode="horizontal">
+        <el-menu-item v-for="(item,i) in this.navList" :key="i" :index="item.name">
+          {{ item.navItem }}
+        </el-menu-item>
+        <a href="/"><el-menu-item id="ret" >返回</el-menu-item></a>
+      </el-menu>
+    </div>
 <div id="joinCharts">
 <div id="join_wx" class="chart"></div>
 <div id="join_yw" class="chart"></div>
 </div>
+  </div>
 </template>
 
 <script>
@@ -149,6 +159,13 @@
     },
     data (){
       return {
+        navList:[
+          {name:'/application_per',navItem:'application_per'},
+          {name:'/join',navItem:'join'},
+          {name:'/top',navItem:'top'},
+          {name:'/ywCompareScore',navItem:'ywCompareScore'},
+          {name:'/wxCompare',navItem:'wxCompare'},
+        ]
       }
     },
     mounted() {
@@ -201,5 +218,12 @@
 .chart{
   width: 50%;
   height: 100%;
+}
+#menu{
+  width: 1000px;
+  margin: 0 auto;
+}
+#ret{
+  float: right;
 }
 </style>

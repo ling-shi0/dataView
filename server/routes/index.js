@@ -110,10 +110,11 @@ router.get('/yingYongTop',function (req,res,next) {
 })
 
 router.get('/ywCompareScore',function (req,res,next) {
-  let result=[];
+  let result;
   listfn = async () => {
     let re = await ywCompareScoreCon.getYwCompareScore();
-    result.push(re);
+    console.log("这里是后端的显示"+re);
+    result=re;
   }
   listfn();
   setTimeout(function () {

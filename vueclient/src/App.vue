@@ -1,32 +1,27 @@
 <template>
   <div id="app">
-<!--    <application_per></application_per>-->
-    <top></top>
-<!--    <join></join>-->
+    <router-view/>
   </div>
 </template>
 
 <script>
-  import application_per from './components/application_per'
-  import top from './components/top'
-  import join from './components/join'
   export default {
-  name: 'App',
-  components:{
-    application_per,
-    top,
-    join
+    name: 'App',
+    components:{
+    }
   }
-}
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
+  #app {
+    margin: 0 80px 0;
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    width: 100%;
+    height: 100%;
+  }
 </style>
